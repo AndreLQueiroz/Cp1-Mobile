@@ -19,6 +19,35 @@ export default function Cardapio() {
       preco: 'R$ 12,00',
       img: require('../assets/coxinha.jpg'),
     },
+       {
+      id: 3,
+      nome: 'Croissant de Chocolate',
+      desc: 'Venha Comer o melhor Croissant de Chocolate.',
+      preco: 'R$ 11,00',
+      img: require('../assets/croissant.jpg'),
+    },
+     {
+      id: 4,
+      nome: 'Coca-Cola 356ml',
+      desc: 'Venha Tomar a melhor coca-cola que voce já viu.',
+      preco: 'R$ 9,00',
+      img: require('../assets/coca.jpg'),
+    },
+     {
+      id: 5,
+      nome: 'Pao de Queijo',
+      desc: 'Pao de Queijo direto de minas apenas na FIAP.',
+      preco: 'R$ 9,00',
+      img: require('../assets/pao.jpg'),
+    },
+    {
+      id: 6,
+      nome: 'Café Quentinho',
+      desc: 'VEnha tomar nosso café cuado na hora apenas na FIAP.',
+      preco: 'R$ 7,00',
+      img: require('../assets/cafe.jpg'),
+    },
+    
   ];
 
   const confirmarReserva = (nome) => {

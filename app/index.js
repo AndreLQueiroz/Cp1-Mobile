@@ -12,7 +12,7 @@ export default function Home() {
     >
       {/* camada escura por cima */}
       <View style={styles.overlay}>
-        <Text style={styles.titulo}>🍕 Cantina FIAP</Text>
+        <Text style={styles.titulo}> Cantina FIAP</Text>
         <Text style={styles.subtitulo}>VENHA COMER NA MELHOR CANTINA DO MUNDO, TEMOS VARIAS VARIEDADES!</Text>
         
         <TouchableOpacity 
