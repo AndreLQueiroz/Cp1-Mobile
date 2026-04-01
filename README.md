@@ -66,11 +66,14 @@ Depois:
 
 ### 🖼️ Prints das Telas
 
-*(Adicionar imagens aqui)*
+#### 🏠 Tela Home
+![Tela Home](./assets/Home.png)
 
-* Tela Home
-* Tela Cardápio
-* Tela Perfil
+#### 🍔 Tela Cardápio
+![Tela Cardápio](./assets/Cardapio.png)
+
+#### 👤 Tela Perfil
+![Tela Perfil](./assets/Perfil.png)
 ---
 
 ## 🧠 Decisões Técnicas
