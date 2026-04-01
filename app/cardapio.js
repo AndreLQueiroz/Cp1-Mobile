@@ -2,90 +2,41 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Alert } from 'react-native';
 
 export default function Cardapio() {
-  const [selecionado, setSelecionado] = useState(null);
+  const [pedidoRealizado, setPedidoRealizado] = useState(false);
 
-  const lanches = [
-    {
-      id: 1,
-      nome: 'Hambúrgao',
-      desc: 'Pão brioche, carne 150g e queijo cheddar.',
-      preco: 'R$ 22,00',
-      img: require('../assets/Hamburgao.webp'),
-    },
-    {
-      id: 2,
-      nome: 'Combo Coxinha + Suco',
-      desc: 'A clássica coxinha da FIAP com suco natural.',
-      preco: 'R$ 12,00',
-      img: require('../assets/coxinha.jpg'),
-    },
-       {
-      id: 3,
-      nome: 'Croissant de Chocolate',
-      desc: 'Venha Comer o melhor Croissant de Chocolate.',
-      preco: 'R$ 11,00',
-      img: require('../assets/croissant.jpg'),
-    },
-     {
-      id: 4,
-      nome: 'Coca-Cola 356ml',
-      desc: 'Venha Tomar a melhor coca-cola que voce já viu.',
-      preco: 'R$ 9,00',
-      img: require('../assets/coca.jpg'),
-    },
-     {
-      id: 5,
-      nome: 'Pao de Queijo',
-      desc: 'Pao de Queijo direto de minas apenas na FIAP.',
-      preco: 'R$ 9,00',
-      img: require('../assets/pao.jpg'),
-    },
-    {
-      id: 6,
-      nome: 'Café Quentinho',
-      desc: 'VEnha tomar nosso café cuado na hora apenas na FIAP.',
-      preco: 'R$ 7,00',
-      img: require('../assets/cafe.jpg'),
-    },
-    
+  const itens = [
+    { id: 1, nome: 'Coxinha de Frango', preco: 'R$ 8,50', img: 'https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=400&auto=format&fit=crop' },
+    { id: 2, nome: 'Suco Natural 300ml', preco: 'R$ 7,00', img: 'https://images.unsplash.com/photo-1600271886382-d63bbac5baaf?q=80&w=400&auto=format&fit=crop' },
+    { id: 3, nome: 'Hambúrguer de Forno', preco: 'R$ 12,00', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop' }
   ];
 
-  const confirmarReserva = (nome) => {
-    setSelecionado(nome);
-    Alert.alert('Reserva Confirmada', `Seu ${nome} estará pronto em 10 minutos!`);
+  const fazerReserva = (nome) => {
+    Alert.alert("Reserva de Item", `Deseja reservar um(a) ${nome}?`, [
+      { text: "Cancelar" },
+      { text: "Confirmar", onPress: () => setPedidoRealizado(true) }
+    ]);
   };
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.saudacao}>O que vamos comer hoje?</Text>
-        <Text style={styles.categoria}>Populares na FIAP</Text>
-      </View>
-
-      {lanches.map((item) => (
+      <Text style={styles.sessao}>Mais Pedidos 🔥</Text>
+      
+      {itens.map((item) => (
         <View key={item.id} style={styles.card}>
-          <Image source={item.img} style={styles.fotoLanche} resizeMode="cover" />
-
-          <View style={styles.infoLanche}>
-            <Text style={styles.nomeLanche}>{item.nome}</Text>
-            <Text style={styles.descLanche}>{item.desc}</Text>
-
-            <View style={styles.footerCard}>
-              <Text style={styles.preco}>{item.preco}</Text>
-              <TouchableOpacity
-                style={styles.botaoAdd}
-                onPress={() => confirmarReserva(item.nome)}
-              >
-                <Text style={styles.textoBotao}>Reservar</Text>
-              </TouchableOpacity>
-            </View>
+          <Image source={{ uri: item.img }} style={styles.img} />
+          <View style={styles.info}>
+            <Text style={styles.nome}>{item.nome}</Text>
+            <Text style={styles.preco}>{item.preco}</Text>
+            <TouchableOpacity style={styles.btn} onPress={() => fazerReserva(item.nome)}>
+              <Text style={styles.btnTxt}>Reservar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       ))}
 
-      {selecionado && (
-        <View style={styles.bannerSucesso}>
-          <Text style={styles.textoSucesso}>Último pedido: {selecionado}</Text>
+      {pedidoRealizado && (
+        <View style={styles.toast}>
+          <Text style={styles.toastTxt}>✅ Item reservado! Retire no balcão.</Text>
         </View>
       )}
     </ScrollView>
@@ -93,63 +44,14 @@ export default function Cardapio() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8F9FA' },
-  header: {
-    padding: 25,
-    backgroundColor: '#fff',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    marginBottom: 20,
-    backgroundColor: "#810AAB"
-  },
-  saudacao: { fontSize: 24, fontWeight: '800', color: '#1A1A1A' },
-  categoria: {
-    fontSize: 14,
-    color: '#E83D84',
-    fontWeight: 'bold',
-    marginTop: 5,
-    textTransform: 'uppercase',
-  },
-  card: {
-    backgroundColor: '#fff',
-    marginHorizontal: 20,
-    marginBottom: 20,
-    borderRadius: 20,
-    overflow: 'hidden',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-  },
-  fotoLanche: {
-    width: '100%',
-    height: 150,
-  },
-  infoLanche: { padding: 15 },
-  nomeLanche: { fontSize: 18, fontWeight: 'bold', color: '#333' },
-  descLanche: { fontSize: 14, color: '#777', marginVertical: 5 },
-  footerCard: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  preco: { fontSize: 18, fontWeight: 'bold', color: '#27ae60' },
-  botaoAdd: {
-    backgroundColor: '#E83D84',
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-  },
-  textoBotao: { color: '#fff', fontWeight: 'bold' },
-  bannerSucesso: {
-    margin: 20,
-    padding: 15,
-    backgroundColor: '#E8F5E9',
-    borderRadius: 15,
-    alignItems: 'center',
-  },
-  textoSucesso: { color: '#2E7D32', fontWeight: 'bold' },
- 
+  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
+  sessao: { fontSize: 22, fontWeight: 'bold', marginBottom: 20, color: '#1A1A1A' },
+  card: { flexDirection: 'row', backgroundColor: '#F9F9F9', borderRadius: 20, marginBottom: 15, overflow: 'hidden', borderWidth: 1, borderColor: '#eee' },
+  img: { width: 110, height: 110 },
+  info: { flex: 1, padding: 12, justifyContent: 'space-between' },
+  nome: { fontSize: 16, fontWeight: 'bold' },
+  preco: { fontSize: 18, color: '#E83D84', fontWeight: '800' },
+  btn: { backgroundColor: '#1A1A1A', padding: 6, borderRadius: 8, alignItems: 'center' },
+  btnTxt: { color: '#fff', fontSize: 12, fontWeight: 'bold' },
+  toast: { backgroundColor: '#E8F5E9', padding: 15, borderRadius: 12, marginTop: 10, marginBottom: 30 }
 });
