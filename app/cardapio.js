@@ -5,37 +5,48 @@ export default function Cardapio() {
   const [pedidoRealizado, setPedidoRealizado] = useState(false);
 
   const itens = [
-  { 
-    id: 1, 
-    nome: 'Coxinha de Frango', 
-    preco: 'R$ 8,50', 
-    img: require('../assets/coxinha.jpg') 
-  },
-  { 
-    id: 2, 
-    nome: 'Suco Natural 300ml', 
-    preco: 'R$ 7,00', 
-    img: require('../assets/cafe.jpg') // troca se tiver suco depois
-  },
-  { 
-    id: 3, 
-    nome: 'Hambúrguer de Forno', 
-    preco: 'R$ 12,00', 
-    img: require('../assets/Hamburgao.webp') 
-  },
-  { 
-    id: 4, 
-    nome: 'Coca-Cola', 
-    preco: 'R$ 8,50', 
-    img: require('../assets/coca.jpg') 
-  },
-
-    { 
-    id: 5, 
-    nome: 'Café', 
-    preco: 'R$ 8,50', 
-    img: require('../assets/cafe.jpg') 
-  }
+  {
+      id: 1,
+      nome: 'Hambúrgao',
+      desc: 'Pão brioche, carne 150g e queijo cheddar.',
+      preco: 'R$ 22,00',
+      img: require('../assets/Hamburgao.webp'),
+    },
+    {
+      id: 2,
+      nome: 'Combo Coxinha + Suco',
+      desc: 'A clássica coxinha da FIAP com suco natural.',
+      preco: 'R$ 12,00',
+      img: require('../assets/coxinha.jpg'),
+    },
+       {
+      id: 3,
+      nome: 'Croissant de Chocolate',
+      desc: 'Venha Comer o melhor Croissant de Chocolate.',
+      preco: 'R$ 11,00',
+      img: require('../assets/croissant.jpg'),
+    },
+     {
+      id: 4,
+      nome: 'Coca-Cola 356ml',
+      desc: 'Venha Tomar a melhor coca-cola que voce já viu.',
+      preco: 'R$ 9,00',
+      img: require('../assets/coca.jpg'),
+    },
+     {
+      id: 5,
+      nome: 'Pao de Queijo',
+      desc: 'Pao de Queijo direto de minas apenas na FIAP.',
+      preco: 'R$ 9,00',
+      img: require('../assets/pao.jpg'),
+    },
+    {
+      id: 6,
+      nome: 'Café Quentinho',
+      desc: 'VEnha tomar nosso café cuado na hora apenas na FIAP.',
+      preco: 'R$ 7,00',
+      img: require('../assets/cafe.jpg'),
+    },
 ];
 
   const fazerReserva = (nome) => {
