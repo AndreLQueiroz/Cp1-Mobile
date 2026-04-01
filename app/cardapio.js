@@ -5,10 +5,38 @@ export default function Cardapio() {
   const [pedidoRealizado, setPedidoRealizado] = useState(false);
 
   const itens = [
-    { id: 1, nome: 'Coxinha de Frango', preco: 'R$ 8,50', img: 'https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=400&auto=format&fit=crop' },
-    { id: 2, nome: 'Suco Natural 300ml', preco: 'R$ 7,00', img: 'https://images.unsplash.com/photo-1600271886382-d63bbac5baaf?q=80&w=400&auto=format&fit=crop' },
-    { id: 3, nome: 'Hambúrguer de Forno', preco: 'R$ 12,00', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop' }
-  ];
+  { 
+    id: 1, 
+    nome: 'Coxinha de Frango', 
+    preco: 'R$ 8,50', 
+    img: require('../assets/coxinha.jpg') 
+  },
+  { 
+    id: 2, 
+    nome: 'Suco Natural 300ml', 
+    preco: 'R$ 7,00', 
+    img: require('../assets/cafe.jpg') // troca se tiver suco depois
+  },
+  { 
+    id: 3, 
+    nome: 'Hambúrguer de Forno', 
+    preco: 'R$ 12,00', 
+    img: require('../assets/Hamburgao.webp') 
+  },
+  { 
+    id: 4, 
+    nome: 'Coca-Cola', 
+    preco: 'R$ 8,50', 
+    img: require('../assets/coca.jpg') 
+  },
+
+    { 
+    id: 5, 
+    nome: 'Café', 
+    preco: 'R$ 8,50', 
+    img: require('../assets/cafe.jpg') 
+  }
+];
 
   const fazerReserva = (nome) => {
     Alert.alert("Reserva de Item", `Deseja reservar um(a) ${nome}?`, [
